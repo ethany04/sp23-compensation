@@ -1,8 +1,8 @@
 # sp23-compensation
-Ethan Yu
 spring 23 adm build team - compensation
 
 Arts & Media
-Joanna Cui
+Joanna Cui, Ethan Yu, Cara Ung, Karner David, Ashrita Gudavalli, Aulona Ljena,
+Jason Yao, Savitha Shan, Shreyansh Dixit
 
 today is a good day.
