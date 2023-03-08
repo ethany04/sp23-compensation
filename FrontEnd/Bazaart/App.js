@@ -6,7 +6,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <SwipePage/>
+        <SwipePage />
       </View>
     </View>
   );
