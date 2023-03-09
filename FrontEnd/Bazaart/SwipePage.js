@@ -9,10 +9,14 @@ const styles = {
     justifyContent: 'center',
     width: '100%',
   },
+  header: {
+    color: '#000',
+    fontSize: 30,
+    marginBottom: 20,
+  },
   cardContainer: {
-    width: '90%',
-    maxWidth: 260,
-    height: 300,
+    width: 350,
+    height: 620,
   },
   card: {
     position: 'absolute',
@@ -20,15 +24,12 @@ const styles = {
     width: '100%',
     maxWidth: 260,
     height: 300,
-    shadowColor: 'black',
-    shadowOpacity: 0.2,
-    shadowRadius: 20,
     borderRadius: 20,
     resizeMode: 'cover',
   },
   cardImage: {
-    width: '100%',
-    height: '100%',
+    width: 350,
+    height: 620,
     overflow: 'hidden',
     borderRadius: 20,
   },
@@ -86,24 +87,23 @@ function Simple() {
     setLastDirection(direction)
   }
 
-  const outOfFrame = (name) => {
-    console.log(name + ' left the screen!')
-  }
-
   return (
-    <View style={styles.container}>
-      <View style={styles.cardContainer}>
-        {characters.map((character) =>
-          <TinderCard key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)} preventSwipe={['down']}>
-            <View style={styles.card}>
-              <ImageBackground style={styles.cardImage} source={character.img}>
-                <Text style={styles.cardTitle}>{character.name}</Text>
-              </ImageBackground>
-            </View>
-          </TinderCard>
-        )}
-      </View>
-    </View>
+    <SafeAreaView>
+        <View style={styles.container}>
+        <Text style={styles.header}>Find an Artist!</Text>
+        <View style={styles.cardContainer}>
+            {characters.map((character) =>
+            <TinderCard key={character.name} onSwipe={(dir) => swiped(dir, character.name)} preventSwipe={['down']}>
+                <View style={styles.card}>
+                <ImageBackground style={styles.cardImage} source={character.img}>
+                    <Text style={styles.cardTitle}>{character.name}</Text>
+                </ImageBackground>
+                </View>
+            </TinderCard>
+            )}
+        </View>
+        </View>
+    </SafeAreaView>
   )
 }
 
