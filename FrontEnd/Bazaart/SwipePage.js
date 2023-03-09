@@ -47,6 +47,9 @@ const styles = {
     justifyContent: 'center',
     display: 'flex',
     zIndex: -100,
+  },
+  flipCard: {
+    position: 'absolute',
   }
 }
 
@@ -95,26 +98,27 @@ function Simple() {
         <Text style={styles.header}>Find an Artist!</Text>
         <View style={styles.cardContainer}>
             {characters.map((character) =>
-            <TinderCard key={character.name} onSwipe={(dir) => swiped(dir, character.name)} preventSwipe={['down']}>
                 <FlipCard 
+                    style={styles.flipCard}
                     friction={6}
+                    perspective={1000}
                     flipHorizontal={true}
                     flipVertical={false}
                     flip={false}
                     clickable={true}
                     onFlipEnd={(isFlipEnd)=>{console.log('isFlipEnd', isFlipEnd)}}
                     >
-                    {/* Face Side */}
-                    <View style={styles.card}>
-                    <ImageBackground style={styles.cardImage} source={character.img}>
-                        <Text style={styles.cardTitle}>{character.name}</Text>
-                    </ImageBackground>
-                    </View>
-                    {/* Back Side */}
-                    <Text>Hello world</Text>
+                    {<TinderCard key={character.name} onSwipe={(dir) => swiped(dir, character.name)} preventSwipe={['down']}>
+                        <View style={styles.card}>
+                        <ImageBackground style={styles.cardImage} source={character.img}>
+                            <Text style={styles.cardTitle}>{character.name}</Text>
+                        </ImageBackground>
+                        </View>
+                    </TinderCard>}
+                    
+                    {<Text>Hello world</Text>}
+                    
                 </FlipCard>
-                
-            </TinderCard>
             )}
         </View>
     </SafeAreaView>
